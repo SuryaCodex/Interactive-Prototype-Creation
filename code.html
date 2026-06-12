@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DesignFlow | High-Performance Design Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .electric-glow {
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#b3c5ff",
+                      "on-tertiary-fixed": "#07006c",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#c0c1ff",
+                      "surface-container-highest": "#2d3449",
+                      "tertiary": "#c0c1ff",
+                      "on-secondary-fixed-variant": "#004d66",
+                      "surface": "#0b1326",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#7bd1fa",
+                      "surface-container-low": "#131b2e",
+                      "on-secondary-fixed": "#001e2b",
+                      "background": "#0b1326",
+                      "surface-container-high": "#222a3d",
+                      "surface-container-lowest": "#060e20",
+                      "on-primary-fixed-variant": "#003fa4",
+                      "on-tertiary-container": "#faf6ff",
+                      "tertiary-container": "#5d60eb",
+                      "surface-bright": "#31394d",
+                      "on-primary-fixed": "#001849",
+                      "on-surface": "#dae2fd",
+                      "secondary-fixed": "#c0e8ff",
+                      "secondary": "#7bd1fa",
+                      "error": "#ffb4ab",
+                      "inverse-surface": "#dae2fd",
+                      "inverse-primary": "#0054d6",
+                      "on-secondary-container": "#e9f6ff",
+                      "on-tertiary": "#1000a9",
+                      "surface-container": "#171f33",
+                      "on-primary": "#002b75",
+                      "outline-variant": "#424656",
+                      "surface-dim": "#0b1326",
+                      "surface-variant": "#2d3449",
+                      "on-secondary": "#003547",
+                      "tertiary-fixed": "#e1e0ff",
+                      "on-background": "#dae2fd",
+                      "outline": "#8c90a1",
+                      "primary-fixed": "#dae1ff",
+                      "on-tertiary-fixed-variant": "#2f2ebe",
+                      "primary-container": "#0066ff",
+                      "primary": "#b3c5ff",
+                      "inverse-on-surface": "#283044",
+                      "on-surface-variant": "#c2c6d8",
+                      "on-primary-container": "#f8f7ff",
+                      "error-container": "#93000a",
+                      "primary-fixed-dim": "#b3c5ff",
+                      "secondary-container": "#00799e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "48px",
+                      "gutter": "24px",
+                      "xl": "40px",
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "2xl": "64px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "base": "4px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "display-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "headline-md": ["30px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-primary/30">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/40">
+<div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-headline-sm" data-icon="grid_view">grid_view</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">DesignFlow</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">Features</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">Pricing</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-lg py-sm rounded-xl font-label-md text-label-md active:scale-95 transition-all duration-300 hover:bg-primary-container/80 electric-glow">
+                Get Started
+            </button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-margin-mobile md:px-margin-desktop py-2xl flex flex-col items-center text-center">
+<!-- Animated Background Placeholder (Using Shaders for Premium Feel) -->
+
+<div class="max-w-4xl mx-auto space-y-lg">
+<div class="inline-flex items-center gap-xs px-md py-base rounded-full glass-card border-primary/20 text-primary-fixed font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    New: v2.0 AI Workflow Engine
+                </div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg leading-tight tracking-tighter">
+                    Manage Design Projects with <span class="text-primary">Clarity</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    The all-in-one platform for UI/UX teams to collaborate, track, and ship high-quality designs faster.
+                </p>
+<div class="flex flex-col sm:flex-row gap-md justify-center items-center pt-md">
+<button class="w-full sm:w-auto px-2xl py-lg bg-primary-container text-on-primary-container rounded-xl font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all electric-glow">
+                        Get Started Free
+                    </button>
+<button class="w-full sm:w-auto px-2xl py-lg glass-card text-on-surface rounded-xl font-label-md text-label-md hover:bg-white/10 active:scale-95 transition-all">
+                        View Demo
+                    </button>
+</div>
+</div>
+<!-- Featured Image (Mockup) -->
+<div class="mt-2xl relative w-full max-w-5xl mx-auto">
+<div class="absolute inset-0 bg-primary/20 blur-[120px] rounded-full -z-10 transform translate-y-12"></div>
+<div class="glass-card rounded-[2rem] p-base md:p-sm shadow-2xl overflow-hidden">
+<img alt="DesignFlow Dashboard" class="w-full h-auto rounded-[1.8rem] border border-white/5" data-alt="A sophisticated mobile dashboard interface for a UI/UX project management tool. The UI features dark mode with vibrant electric blue highlights, showing project timelines, collaborator avatars, and clean minimalist task cards. The lighting is crisp and modern, reflecting a high-performance software environment with deep blacks and sharp typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYUqYgbUogQc2qERt07uTDRxZEehBqSGi4wWTh_e0t8rmDXisrS-YwSdFP-Y31BdZJyhj9nj28UtLeXM5QW1Lp3zP0qr4H3h1FhEM0kt_UyGufUGa-FbE0nGtKnzI8uO5jKUiR01r9jIK4tc_HAfKsVtBOPfdAE0b_pc_aOrgAHt-aRmTjpYcxilqdZusbXZLgqmCGia4ZEYrPeVEP93wNOqm3yQ0xuGvrGnphvpg_DWaMJCtoEVX-r1fWE9vBYORwqD-yaeBYy4U"/>
+</div>
+</div>
+</section>
+<!-- Social Proof Section -->
+<section class="py-xl bg-surface-container-lowest/50 border-y border-white/5">
+<div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop">
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mb-xl tracking-widest">TRUSTED BY 500+ DESIGN TEAMS WORLDWIDE</p>
+<div class="flex flex-wrap justify-center items-center gap-2xl opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+<div class="flex items-center gap-xs font-bold text-headline-sm">
+<span class="material-symbols-outlined" data-icon="polymer">polymer</span> QUANTUM
+                    </div>
+<div class="flex items-center gap-xs font-bold text-headline-sm">
+<span class="material-symbols-outlined" data-icon="stream">stream</span> FLOW
+                    </div>
+<div class="flex items-center gap-xs font-bold text-headline-sm">
+<span class="material-symbols-outlined" data-icon="hub">hub</span> NEXUS
+                    </div>
+<div class="flex items-center gap-xs font-bold text-headline-sm">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span> ZENITH
+                    </div>
+</div>
+</div>
+</section>
+<!-- Feature Highlights (Bento Grid Style) -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-6xl mx-auto space-y-2xl">
+<div class="text-center space-y-md">
+<h2 class="font-headline-md text-headline-md md:text-display-lg leading-tight">Engineered for Creative Speed</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Stop juggling tools. DesignFlow consolidates your entire design lifecycle into one powerful, unified canvas.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Feature 1: Large -->
+<div class="md:col-span-8 glass-card p-xl rounded-[1.5rem] flex flex-col md:flex-row gap-lg group hover:border-primary/40 transition-all duration-500">
+<div class="flex-1 space-y-md order-2 md:order-1">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="bolt">bolt</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm">Streamlined Workflow</h3>
+<p class="text-on-surface-variant">Automate repetitive hand-off tasks and keep your assets perfectly synced across every design tool in your stack.</p>
+<ul class="space-y-sm pt-md">
+<li class="flex items-center gap-sm text-label-md font-label-md text-primary">
+<span class="material-symbols-outlined text-label-sm" data-icon="check_circle">check_circle</span> Auto-versioning
+                                </li>
+<li class="flex items-center gap-sm text-label-md font-label-md text-primary">
+<span class="material-symbols-outlined text-label-sm" data-icon="check_circle">check_circle</span> One-click Dev Handoff
+                                </li>
+</ul>
+</div>
+<div class="flex-1 order-1 md:order-2">
+<img alt="Workflow Visual" class="w-full h-full object-cover rounded-xl shadow-lg group-hover:scale-[1.02] transition-transform duration-500" data-alt="A clean architectural visual of a workflow pipeline. Glowing electric blue lines connect several minimalist UI cards representing different stages of a design process from prototype to production. The environment is dark, minimalist, and uses soft focused lighting to highlight the 'streamlined' movement of data." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsYYBQxVwxchDud1UznvraLB00EiI4VdzhfckX17xySeuxJ08i28VY5yqWArcfLvTANgmCmNeD24g_mn-8_MdUJdVeeaE-7fGIu4WKGLC6Df3iwS6sn89mzGjxXMUPWtm8SkSGNSer_SxeulvetZOiSEyXM40zGcbRXNL9vU3xUtNW7DvdOYor2nC2Ae5CaY8hTROreb7n8gW4oMczQzw2gj9sIYhBW_zRCP_mqsrz7p1-Sm3G9eNYmWy6Xf7-nTaTl0UY17OTEto"/>
+</div>
+</div>
+<!-- Feature 2: Tall/Vertical -->
+<div class="md:col-span-4 glass-card p-xl rounded-[1.5rem] space-y-md flex flex-col hover:border-primary/40 transition-all duration-500">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="group">group</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm">Real-time Collaboration</h3>
+<p class="text-on-surface-variant">Chat, comment, and review live. No more messy threads or lost feedback loops.</p>
+<div class="mt-auto pt-lg">
+<div class="flex -space-x-4">
+<img alt="User" class="w-10 h-10 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKV8_ZvzwSKkkEKYPnTK2cpSkCVazb7jOo8n8gAwh9rx1GKGOro0ld27V6VQ1n5rUuFPsNmqzIx43ZJlh1g538iCDvNgqrah2DmB36LANAu5mGq-Sbr9nirGfQOJ6NJ6Ju9ECPuxVZBZLnT3CxdT6FIniJOweM3d3j-zWsmuK-g0nKao8eIctAfHEhpoa9bxD8qJkDgf2DOZQw3Mn7797YR3cR7vYFtOupQVxIPCzOIIgx7t7pAGOeDtp-0nH9KbRdNYP6bi32Izc"/>
+<img alt="User" class="w-10 h-10 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa3b29Oc2_f_ILWPaw_Jkmtkx3ZRUVLN6dRSxC-22JCaG54Q6_T6J6jWAgKVhe_mIxU8EF49WXDA5O05Tv2hpfJu5Dzri9B49dMujNnJ3qoWFpDOrvcDONvJYTJ8lZHXFPfbG1GT3wsB7mMKoFE6edQ3j1282kMHMQIEQuVPC4JvRzGp04s93J7rxWSOpe7vyA1_CzB6z1aLnTtGcmmrZoFFbCzfhDI14KQ8M8MdcBfa15koC1s_sb6Py8ZLE3pkiPtrb88GikJ5I"/>
+<img alt="User" class="w-10 h-10 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB51J-BGlKu5-BnyoYdr727GWGhsyL9XjhkFQqQfOTtg_DU7QSSxUSIjCp2t8Wunri5cMsL5NU3UB3Q137mwFCKjgFTOt3Win1MzoqS3tkWMqu-w61UeKtkoFRx3jWfcJjPBphWmxBUxFBS0OZ79JEKhTnPRs8tm82T7nOrq3P7sdYRoNoS2HuOZlG9d5qxKMVIY8qiGZByYavyTPatH5Ut1NDk7aKM3jP3nTtyiOrRPRr3wrg6bDdWKv28HcCcDub7HsgMgD8WQKo"/>
+<div class="w-10 h-10 rounded-full border-2 border-background bg-surface-container flex items-center justify-center text-label-sm">+12</div>
+</div>
+</div>
+</div>
+<!-- Feature 3: Small/Full Width Mobile -->
+<div class="md:col-span-12 glass-card p-xl rounded-[1.5rem] flex flex-col md:flex-row items-center gap-xl hover:border-primary/40 transition-all duration-500">
+<div class="w-full md:w-1/3 space-y-md">
+<div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="insights">insights</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm">Advanced Analytics</h3>
+<p class="text-on-surface-variant">Identify bottlenecks in your design cycles with precision metrics and performance reporting.</p>
+</div>
+<div class="w-full md:w-2/3 h-48 md:h-64 rounded-xl overflow-hidden bg-surface-container-lowest">
+<!-- Using a placeholder for a data visualization graphic -->
+<div class="w-full h-full p-lg flex items-end gap-sm">
+<div class="w-full bg-primary/20 rounded-t-lg h-[40%] animate-[bounce_2s_infinite]"></div>
+<div class="w-full bg-primary/40 rounded-t-lg h-[60%] animate-[bounce_2.5s_infinite]"></div>
+<div class="w-full bg-primary/60 rounded-t-lg h-[85%] animate-[bounce_3s_infinite]"></div>
+<div class="w-full bg-primary/40 rounded-t-lg h-[50%] animate-[bounce_1.5s_infinite]"></div>
+<div class="w-full bg-primary/80 rounded-t-lg h-[70%] animate-[bounce_2.2s_infinite]"></div>
+<div class="w-full bg-primary rounded-t-lg h-[95%] animate-[bounce_2.8s_infinite]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Focused CTA Section -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-5xl mx-auto relative overflow-hidden glass-card rounded-[2.5rem] py-2xl px-lg text-center space-y-lg border-primary/30">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 -z-10"></div>
+<h2 class="font-headline-md md:font-display-lg text-headline-md md:text-display-lg max-w-2xl mx-auto">Ready to ship your next masterpiece?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">Join the new standard of design project management. Start your free trial today.</p>
+<div class="pt-md">
+<button class="px-2xl py-lg bg-primary-container text-on-primary-container rounded-xl font-label-md text-label-md hover:scale-105 active:scale-95 transition-all electric-glow">
+                        Join DesignFlow
+                    </button>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-md">No credit card required • 14-day free trial</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-xl border-t border-white/10">
+<div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="grid_view">grid_view</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">DesignFlow</span>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Product</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Features</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Pricing</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Privacy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Terms</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 DesignFlow. All rights reserved.</p>
+</div>
+</footer>
+<!-- Interaction Script -->
+<script>
+        // Simple scroll reveal effect for glass cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(card);
+        });
+    </script>
+</body></html>
